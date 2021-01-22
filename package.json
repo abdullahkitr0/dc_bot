@@ -1,0 +1,30 @@
+{
+  "name": "calgı",
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.7",
+    "fs": "^0.0.2",
+    "lyrics-finder": "^21.7.0",
+    "moment": "^2.29.1",
+    "node-opus": "^0.3.3",
+    "opusscript": "0.0.7",
+    "youtube-sr": "^3.0.0",
+    "yt-search": "^2.5.2",
+    "ytdl-core": "^4.4.4",
+    "ytdl-core-discord": "^1.2.5",
+    "ytpl": "^2.0.4"
+  }
+}

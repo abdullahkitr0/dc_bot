@@ -1,0 +1,43 @@
+require("dotenv").config();
+const fs = require("fs");
+const { Collection, Client } = require("discord.js");
+
+const client = new Client();
+client.commands = new Collection();//discord Abdullah#7100
+client.queue = new Map()
+
+client.config = {
+  prefix: process.env.PREFIX
+}
+
+//Loading Events
+fs.readdir(__dirname + "/events/", (err, files) => {//discord Abdullah#7100
+  if (err) return console.error(err);
+  files.forEach((file) => {
+    const event = require(__dirname + `/events/${file}`);
+    let eventName = file.split(".")[0];
+    client.on(eventName, event.bind(null, client));//discord Abdullah#7100
+    console.log("Event Yükleniyor: "+eventName)
+  });
+});
+
+//Loading Commands
+fs.readdir("./commands/", (err, files) => {//discord Abdullah#7100
+  if (err) return console.error(err);
+  files.forEach((file) => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    client.commands.set(commandName, props);//discord Abdullah#7100
+    console.log("Komut Yükleniyor: "+commandName)
+  });
+});
+
+//discord Abdullah#7100
+client.login(process.env.TOKEN)
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'sa') {
+    msg.reply('***Aleyküm selam,  hoş geldin :hand_splayed: ***');
+  }
+});
